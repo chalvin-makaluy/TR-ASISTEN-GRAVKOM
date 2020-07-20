@@ -1,2 +1,2 @@
-# TR_GRAFKOM_KODE KELAS_7
+# TR_GRAFKOM_A_7
 Château de Suscinio, France 
