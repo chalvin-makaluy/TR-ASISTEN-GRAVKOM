@@ -303,7 +303,7 @@ void tampil(void)
 	glPopMatrix();
 
 	glBegin(GL_POLYGON);
-	glColor3f(0.862, 0.86, 0.86);
+	glColor3f(0.50, 0.50, 0.50);
 	glVertex3f(-60, -40, 30);
 	glVertex3f(-60, -20, 30);
 	glVertex3f(-50, -20, 45);
@@ -311,7 +311,7 @@ void tampil(void)
 	glEnd();
 
 	glBegin(GL_POLYGON);
-	glColor3f(0.862, 0.86, 0.86);
+	glColor3f(0.50, 0.50, 0.50);
 	glVertex3f(-64, -40, 30);
 	glVertex3f(-64, -20, 30);
 	glVertex3f(-50, -20, 60);
