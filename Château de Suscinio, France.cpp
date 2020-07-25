@@ -11,6 +11,7 @@ void init(void);
 void tampil(void);
 void keyboard(unsigned char, int, int);
 void ukuran(int, int);
+GLUquadricObj* obj = gluNewQuadric();
 
 GLuint texture[35];
 
@@ -103,30 +104,92 @@ void tampil(void)
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	else
 		glClear(GL_COLOR_BUFFER_BIT);
+	GLUquadricObj* obj = gluNewQuadric();
 
 
 
-	//lt
+	//tanah
 	glBegin(GL_POLYGON);
-	glColor3f(1, 1, 1);
-	glVertex3f(70, -40.00, 100);
-	glVertex3f(-70, -40.00, 100);
-	glVertex3f(-70, -40.00, -70);
-	glVertex3f(70, -40.00, -70);
+	glColor3ub(36, 176, 28);
+	glVertex3f(90, -40.00, 100);
+	glVertex3f(-90, -40.00, 100);
+	glVertex3f(-90, -40.00, -100);
+	glVertex3f(90, -40.00, -100);
 	glEnd();
 
 	//rumah belakang
 	glPushMatrix();
 	glBegin(GL_POLYGON);
-	glColor3f(1, 1, 0.5);
+	glColor3f(0.50, 0.50, 0.50);
 	glBindTexture(GL_TEXTURE_2D, texture[2]);
 	kotak(-30, -39.9, -60, 60, -5, -45);
 	glEnd();
 	glPopMatrix();
 
+		//atap
+		glBegin(GL_TRIANGLES);
+		glColor3f(0.50, 0.50, 0.50);
+		glVertex3f(60, 10, -53);
+		glVertex3f(60, -5, -60);
+		glVertex3f(60, -5, -45);
+		glEnd();
+
+		glBegin(GL_POLYGON);
+		glColor3f(0, 0, 0);
+		glVertex3f(60, -5, -60);
+		glVertex3f(60, 10, -53);
+		glVertex3f(-30, 10, -53);
+		glVertex3f(-30, -5, -60);
+		glEnd();
+
+		glBegin(GL_POLYGON);
+		glColor3f(0, 0, 0);
+		glVertex3f(-30, 10, -53);
+		glVertex3f(-30, -5, -45);
+		glVertex3f(60, -5, -45);
+		glVertex3f(60, 10, -53);
+		glEnd();
+
+		glBegin(GL_TRIANGLES);
+		glColor3f(0.50, 0.50, 0.50);
+		glVertex3f(-30, 10, -53);
+		glVertex3f(-30, -5, -60);
+		glVertex3f(-30, -5, -45);
+		glEnd();
+
+	//lingkaran belakang kanan
+	glPushMatrix();
+	glTranslatef(65, 15, -65);
+	glRotatef(90, 90, 0, 0);
+	glColor3f(0, 0, 0);
+	gluCylinder(obj, 0, 15, 15, 30, 30);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(65, 0, -65);
+	glRotatef(90, 90, 0, 0);
+	glColor3f(0.50, 0.50, 0.50);
+	gluCylinder(obj, 15, 15, 40, 30, 30);
+	glPopMatrix();
+
+	//lingkaran kanan tengah
+	glPushMatrix();
+	glTranslatef(70, -20, 0);
+	glRotatef(90, 90, 0, 0);
+	glColor3f(0, 0, 0);
+	gluCylinder(obj, 0, 10, 0, 30, 30);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(70, -13, 0);
+	glRotatef(90, 90, 0, 0);
+	glColor3f(0.50, 0.50, 0.50);
+	gluCylinder(obj, 10, 10, 27, 30, 30);
+	glPopMatrix();
+
 	glPushMatrix();
 	glBegin(GL_POLYGON);
-	glColor3f(1, 1, 0.5);
+	glColor3f(0.50, 0.50, 0.50);
 	glBindTexture(GL_TEXTURE_2D, texture[2]);
 	kotak(-50, -39.9, -60, -30, -20, -55);
 	glEnd();
@@ -137,25 +200,103 @@ void tampil(void)
 	//rumah depan
 	glPushMatrix();
 	glBegin(GL_POLYGON);
-	glColor3f(0, 1, 0.5);
+	glColor3f(0.50, 0.50, 0.50);
 	glBindTexture(GL_TEXTURE_2D, texture[2]);
 	kotak(30, -39.9, 60, -50, 0, 45);
 	glEnd();
 	glPopMatrix();
+			//atap
+			glBegin(GL_TRIANGLES);
+			glColor3f(0.50, 0.50, 0.50);
+			glVertex3f(-50, 15, 53);
+			glVertex3f(-50, 0, 60);
+			glVertex3f(-50, 0, 45);
+			glEnd();
 
+			glBegin(GL_POLYGON);
+			glColor3f(0, 0, 0);
+			glVertex3f(-50, 0, 60);
+			glVertex3f(-50, 15, 53);
+			glVertex3f(30, 15, 53);
+			glVertex3f(30, 0, 60);
+			glEnd();
+
+			glBegin(GL_POLYGON);
+			glColor3f(0, 0, 0);
+			glVertex3f(30, 15, 53);
+			glVertex3f(30, 0, 45);
+			glVertex3f(-50, 0, 45);
+			glVertex3f(-50, 15, 53);
+			glEnd();
+
+			glBegin(GL_TRIANGLES);
+			glColor3f(0.50, 0.50, 0.50);
+			glVertex3f(30, 15, 53);
+			glVertex3f(30, 0, 60);
+			glVertex3f(30, 0, 45);
+			glEnd();
+
+			//jendela 1
+			glBegin(GL_POLYGON);
+			glColor3f(0.862, 0.86, 0.86);
+			glVertex3f(-10, -8, 60.1);
+			glVertex3f(-10, -3, 60.1);
+			glVertex3f(-5, -3, 60.1);
+			glVertex3f(-5, -8, 60.1);
+			glEnd();
+
+
+			//jendela 2
+			glBegin(GL_POLYGON);
+			glColor3f(0.862, 0.86, 0.86);
+			glVertex3f(-20, -8, 60.1);
+			glVertex3f(-20, -3, 60.1);
+			glVertex3f(-15, -3, 60.1);
+			glVertex3f(-15, -8, 60.1);
+			glEnd();
+
+
+			//jendela 3
+			glBegin(GL_POLYGON);
+			glColor3f(0.862, 0.86, 0.86);
+			glVertex3f(-20, -20, 60.1);
+			glVertex3f(-20, -15, 60.1);
+			glVertex3f(-15, -15, 60.1);
+			glVertex3f(-15, -20, 60.1);
+			glEnd();
+
+
+			//jendela 4
+			glBegin(GL_POLYGON);
+			glColor3f(0.862, 0.86, 0.86);
+			glVertex3f(-5, -20, 60.1);
+			glVertex3f(-5, -15, 60.1);
+			glVertex3f(0, -15, 60.1);
+			glVertex3f(0, -20, 60.1);
+			glEnd();
+
+			//pintu
+			glBegin(GL_POLYGON);
+			glColor3f(0.862, 0.86, 0.86);
+			glVertex3f(-15, -40, 60.1);
+			glVertex3f(-15, -30, 60.1);
+			glVertex3f(-5, -30, 60.1);
+			glVertex3f(-5, -40, 60.1);
+			glEnd();
+
+	//kanan pendek
 	glPushMatrix();
 	glBegin(GL_POLYGON);
-	glColor3f(0, 0, 0.5);
+	glColor3f(0.50, 0.50, 0.50);
 	glBindTexture(GL_TEXTURE_2D, texture[2]);
 	kotak(60, -39.9, 60, 30, -20, 45);
 	glEnd();
 	glPopMatrix();
 
-
 	//kiri panjang
 	glPushMatrix();
 	glBegin(GL_POLYGON);
-	glColor3f(1, 1, 0.5);
+	glColor3f(0.50, 0.50, 0.50);
 	glBindTexture(GL_TEXTURE_2D, texture[2]);
 	kotak(-65, -39.9, -20, -60, -20, 30);
 	glEnd();
@@ -164,11 +305,59 @@ void tampil(void)
 	// KANAN
 	glPushMatrix();
 	glBegin(GL_POLYGON);
-	glColor3f(1, 0, 0.5);
+	glColor3f(0.50, 0.50, 0.50);
 	glBindTexture(GL_TEXTURE_2D, texture[2]);
 	kotak(65, -39.9, 60, 60, -20, -60);
 	glEnd();
 	glPopMatrix();
+
+	//lingkaran depan kiri
+	glPushMatrix();
+	glTranslatef(-35, 15, 69);
+	glRotatef(90, 90, 0, 0);
+	glColor3f(0, 0, 0);
+	gluCylinder(obj, 0, 15, 15, 30, 30);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(-35, 0, 69);
+	glRotatef(90, 90, 0, 0);
+	glColor3f(0.50, 0.50, 0.50);
+	gluCylinder(obj, 15, 15, 40, 30, 30);
+	glPopMatrix();
+
+	//lingkaran depan tangah
+	glPushMatrix();
+	glTranslatef(15, 15, 69);
+	glRotatef(90, 90, 0, 0);
+	glColor3f(0, 0, 0);
+	gluCylinder(obj, 0, 15, 15, 30, 30);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(15, 0, 69);
+	glRotatef(90, 90, 0, 0);
+	glColor3f(0.50, 0.50, 0.50);
+	gluCylinder(obj, 15, 15, 40, 30, 30);
+	glPopMatrix();
+
+	//lingkaran depan kanan
+	glPushMatrix();
+	glTranslatef(65, 15, 60);
+	glRotatef(90, 90, 0, 0);
+	glColor3f(0, 0, 0);
+	gluCylinder(obj, 0, 15, 15, 30, 30);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(65, 0, 60);
+	glRotatef(90, 90, 0, 0);
+	glColor3f(0.50, 0.50, 0.50);
+	gluCylinder(obj, 15, 15, 40, 30, 30);
+	glPopMatrix();
+
+	
+
 
 }
 
