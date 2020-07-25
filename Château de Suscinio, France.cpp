@@ -302,6 +302,22 @@ void tampil(void)
 	glEnd();
 	glPopMatrix();
 
+	glBegin(GL_POLYGON);
+	glColor3f(0.862, 0.86, 0.86);
+	glVertex3f(-60, -40, 30);
+	glVertex3f(-60, -20, 30);
+	glVertex3f(-50, -20, 45);
+	glVertex3f(-50, -40, 45);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glColor3f(0.862, 0.86, 0.86);
+	glVertex3f(-64, -40, 30);
+	glVertex3f(-64, -20, 30);
+	glVertex3f(-50, -20, 60);
+	glVertex3f(-50, -40, 60);
+	glEnd();
+
 	// KANAN
 	glPushMatrix();
 	glBegin(GL_POLYGON);
@@ -483,7 +499,7 @@ int main(int argc, char** argv)
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
 	glutInitWindowSize(800, 600);
 	glutInitWindowPosition(150, 80);
-	glutCreateWindow("TR");
+	glutCreateWindow("Château de Suscinio, France");
 	glutDisplayFunc(display);
 	glutReshapeFunc(ukuran);
 	glutMouseFunc(mouse);
